@@ -16,12 +16,16 @@ void Player::update(){
     else 
         vel.x = 0;
 
+    /*
     if (IsKeyDown(KEY_UP)) 
         vel.y = -12.0f;
     else if (IsKeyDown(KEY_DOWN)) 
         vel.y = 12.0f;
     else 
         vel.y = 0;
+    */
+    
+    vel.y = 10;
 
     pos.x += vel.x;
     pos.y += vel.y;
