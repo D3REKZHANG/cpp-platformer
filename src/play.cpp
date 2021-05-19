@@ -4,23 +4,37 @@
 #include "../include/play.h"
 #include "../include/menu.h"
 #include "../include/player.h"
+#include "../include/block.h"
+#include <iostream>
 
 Play Play::play;
+
+void Play::init(){
+    blockList.push_back(Block({50,300,400,50}, RED));
+}
 
 void Play::handleEvents(StateManager* SM){}
 
 void Play::update(StateManager* SM){
     p.update();
+    
+    p.falling = true;
+    // collision checking
+    for(Block block:blockList){
+        if(CheckCollisionRecs(p.rect, block.rect)){
+            p.pos.y = block.rect.y-p.rect.height;
+            p.refreshRect();
+            p.falling = false;
+        }
+    }
 }
 
 void Play::draw(StateManager* SM){
     ClearBackground(WHITE);
 
     // draw blocks
-    for(int r=0;r<10;r++){
-        for(int c=0;c<16;c++){
-            if(blocks[r][c] == 1) DrawRectangle(c*50, r*50, 50, 50, RED);
-        }
+    for(Block block:blockList){
+        block.draw();
     }
 
     DrawText("play",10,10,50,RED);
@@ -28,8 +42,6 @@ void Play::draw(StateManager* SM){
 }
 
 // unused functions
-void Play::init(){}
-
 void Play::cleanup(){}
  
 void Play::pause(){}

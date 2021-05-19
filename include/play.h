@@ -4,6 +4,8 @@
 #include "raylib.h"
 #include "gamestate.h"
 #include "player.h"
+#include "block.h"
+#include <vector>
 
 class Play : public GameState {
     private: 
@@ -11,18 +13,7 @@ class Play : public GameState {
     protected: 
         Play(){}
     public:
-        int blocks[10][16] = {
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,1,1,1,0,0,0,0,1,1,0,0,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0}
-        };
+        std::vector<Block> blockList;
         Player p{(Vector2){200,200}};
 
         // default methods

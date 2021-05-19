@@ -6,11 +6,14 @@
 class Player{
     public:
         Vector2 pos;
+        Vector2 prevPos;
         Vector2 vel;
         bool canJump;
+        bool falling;
         Rectangle rect;
 
         Player(Vector2 _pos);
+        void refreshRect();
         void update();
         void draw();
 };

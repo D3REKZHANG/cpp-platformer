@@ -1,7 +1,7 @@
 #ifndef STATEMANAGER_H
 #define STATEMANAGER_H
 
-#include <bits/stdc++.h>
+#include <vector>
 
 class GameState;
 
