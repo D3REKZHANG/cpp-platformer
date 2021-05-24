@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 #include "include/raylib.h"
 #include "include/statemanager.h"
 #include "include/menu.h"
@@ -17,7 +16,7 @@ int main(){
     stateManager.pushState(Menu::instance());
 
     // main game loop
-    while (!WindowShouldClose() and stateManager.running())
+    while (!WindowShouldClose() && stateManager.running())
     {
         // handle events (key presses, mouse, etc)
         stateManager.handleEvents();

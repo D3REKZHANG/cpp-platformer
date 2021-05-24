@@ -5,16 +5,15 @@
 
 class Player{
     public:
-        Vector2 pos;
-        Vector2 prevPos;
-        Vector2 vel;
-        bool canJump;
-        bool falling;
+        Vector2 pos, vel, acc;
+        bool grounded;
         Rectangle rect;
 
         Player(Vector2 _pos);
         void refreshRect();
-        void update();
+        float bottom();
+        void handleEvents();
+        void update(float gravity);
         void draw();
 };
 

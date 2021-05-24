@@ -13,8 +13,10 @@ class Play : public GameState {
     protected: 
         Play(){}
     public:
+        float gravity;
         std::vector<Block> blockList;
-        Player p{(Vector2){200,200}};
+        Player p{{200,200}};
+        Camera2D camera;
 
         // default methods
         void init();
