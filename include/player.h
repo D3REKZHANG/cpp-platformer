@@ -5,7 +5,7 @@
 
 class Player{
     public:
-        Vector2 pos, vel, acc;
+        Vector2 prev, pos, vel, acc;
         bool grounded;
         Rectangle rect;
 

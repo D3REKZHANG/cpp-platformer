@@ -30,33 +30,35 @@ void Play::update(StateManager* SM){
     p.update(gravity);
     
     p.grounded = false;
+    std::printf("Before: (%f,%f)\n", p.pos.x, p.pos.y);
     // collision checking
     for(Block block:blockList){
+        // check y-axis collision
         if(CheckCollisionRecs(p.rect, block.rect)){
-            // shift player out to the shallow side
-            Rectangle colRect = GetCollisionRec(p.rect, block.rect);
-            
-            if(colRect.height < colRect.width){
-                if(p.rect.y + p.rect.height > block.rect.y)
-                    p.pos.y -= colRect.height;
-                else
-                    p.pos.y += colRect.height;
-
+            if(p.prev.y+p.rect.height < block.rect.y){
+                p.pos.y = block.rect.y-p.rect.height;
                 // ground the player
                 p.vel.y = 0;
                 p.grounded = true;
-
-            }else{
-                if(p.rect.x + p.rect.width > block.rect.x) 
-                    p.pos.x -= colRect.width;
-                else 
-                    p.pos.x += colRect.width;
-                p.vel.x = 0;
+            }else if(p.prev.y > block.rect.y+block.rect.height){
+                p.pos.y = block.rect.y+block.rect.height;
             }
-
-            p.refreshRect();
         }
+        p.refreshRect();
+            
+        // if still colliding
+        if(CheckCollisionRecs(p.rect, block.rect)){
+            if(p.prev.x+p.rect.width < block.rect.x){
+                p.pos.x = block.rect.x-p.rect.width;
+                p.vel.x = 0;
+            }else if(p.prev.x > block.rect.x+block.rect.width){
+                p.pos.x = block.rect.x+block.rect.width;
+            }
+        }
+
+        p.refreshRect();
     }
+    std::printf("After: (%f,%f)\n", p.pos.x, p.pos.y);
 
     /*
     camera.target = {p.rect.x+p.rect.width/2, p.rect.y+p.rect.height/2};

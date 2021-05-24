@@ -36,6 +36,7 @@ void Player::handleEvents(){
 void Player::update(float gravity){
     acc.y = gravity;
     
+    prev = pos;
     // apply position += velocity += acceleration
     vel.x += acc.x;
     vel.y = std::min(vel.y+acc.y, 15.0f); // cap vel.y at 15
