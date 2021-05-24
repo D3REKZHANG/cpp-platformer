@@ -9,7 +9,7 @@ int main(){
 
     InitWindow(screenWidth, screenHeight, "window");
 
-    SetTargetFPS(10);
+    SetTargetFPS(60);
 
     StateManager stateManager;
 
