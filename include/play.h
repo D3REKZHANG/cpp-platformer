@@ -4,6 +4,7 @@
 #include "raylib.h"
 #include "gamestate.h"
 #include "player.h"
+#include "camera.h"
 #include "block.h"
 #include <vector>
 
@@ -16,7 +17,8 @@ class Play : public GameState {
         float gravity;
         std::vector<Block> blockList;
         Player p{{200,200}};
-        Camera2D camera;
+        MyCamera camera{"follow"};
+
 
         // default methods
         void init();

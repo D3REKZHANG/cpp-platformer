@@ -15,11 +15,7 @@ void Play::init(){
     gravity = 2;
     blockList.push_back(Block({10,480,700,10}, RED));
     blockList.push_back(Block({500,450,200,40}, RED));
-    blockList.push_back(Block({300,350,100,30}, RED));
-
-    // camera setup
-    // camera.rotation = 0.0f;
-    // camera.zoom = 1.0f;
+    blockList.push_back(Block({300,360,100,30}, RED));
 }
 
 void Play::handleEvents(StateManager* SM){
@@ -60,11 +56,7 @@ void Play::update(StateManager* SM){
 
     }
 
-    /*
-    camera.target = {p.rect.x+p.rect.width/2, p.rect.y+p.rect.height/2};
-    camera.offset.x = (p.rect.x > 800/2) ? 800/2.0f : 0;
-    camera.offset.y = (p.rect.y > 500/2) ? 500/2.0f : 0;
-    */
+    camera.update(p, 800, 500);
 }
 
 void Play::draw(StateManager* SM){
@@ -73,14 +65,14 @@ void Play::draw(StateManager* SM){
     DrawText("play",10,10,50,RED);
     DrawText(std::to_string(GetFPS()).c_str(),300,10,20,BLACK);
 
-    //BeginMode2D(camera);
+    BeginMode2D(camera.camera);
         // draw blocks
         for(Block block:blockList){
             block.draw();
         }
 
         p.draw();
-    //EndMode2D();
+    EndMode2D();
 }
 
 // unused functions
