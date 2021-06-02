@@ -6,6 +6,7 @@ Block::Block(Rectangle _rect, Color _col){
     color = _col;
 }
 
+
 void Block::draw(){
     DrawRectangleRec(rect, color);
 }
