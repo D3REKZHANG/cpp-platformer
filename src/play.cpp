@@ -15,6 +15,7 @@ void Play::init(){
     gravity = 2;
     blockList.push_back(Block({10,480,700,10}, RED));
     blockList.push_back(Block({500,450,200,40}, RED));
+    blockList.push_back(Block({200,350,100,20}, RED));
     blockList.push_back(Block({300,360,100,30}, RED));
 }
 
